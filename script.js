@@ -1,8 +1,6 @@
 let countdownInterval;
-let remainingSeconds = 0; // Variable to store remaining time
-
-// Add an audio element for the notification sound
-const timerEndSound = new Audio('Radar sound effect.mp3'); // Replace with the path to your sound file
+let remainingSeconds = 0; 
+const timerEndSound = new Audio('Radar sound effect.mp3');
 
 function startCountdown() {
     clearInterval(countdownInterval);
@@ -25,7 +23,7 @@ function startCountdown() {
         if (remainingSeconds <= 0) {
             clearInterval(countdownInterval);
             alert('Time is up!');
-            timerEndSound.play(); // Play the notification sound
+            timerEndSound.play();
         } else {
             remainingSeconds--;
             updateTimerDisplay();
@@ -35,7 +33,7 @@ function startCountdown() {
 
 function resetCountdown() {
     clearInterval(countdownInterval);
-    remainingSeconds = 0; // Reset remaining time
+    remainingSeconds = 0;
     document.getElementById('hours').value = 0;
     document.getElementById('minutes').value = 0;
     document.getElementById('seconds').value = 0;
@@ -49,13 +47,13 @@ function pauseCountdown() {
 document.getElementById('pauseButton').addEventListener('click', pauseCountdown);
 
 function resumeCountdown() {
-    clearInterval(countdownInterval); // Ensure no duplicate intervals
+    clearInterval(countdownInterval);
     if (remainingSeconds > 0) {
         countdownInterval = setInterval(() => {
             if (remainingSeconds <= 0) {
                 clearInterval(countdownInterval);
                 alert('Time is up!');
-                timerEndSound.play(); // Play the notification sound
+                timerEndSound.play();
             } else {
                 remainingSeconds--;
                 const hrs = String(Math.floor(remainingSeconds / 3600)).padStart(2, '0');
